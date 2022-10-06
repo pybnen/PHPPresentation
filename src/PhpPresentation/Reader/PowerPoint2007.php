@@ -883,9 +883,9 @@ class PowerPoint2007 implements ReaderInterface
         $oSlide->addShape($oShape);
     }
 
-    protected function loadShapeRichText(XMLReader $document, DOMElement $node, AbstractSlide $oSlide): void
+    protected function loadShapeRichText(XMLReader $document, DOMElement $node, $oSlide): void
     {
-        if (!$document->elementExists('p:txBody/a:p/a:r', $node)) {
+        if (!$document->elementExists('p:txBody/a:p/a:r', $node) || !$oSlide instanceof AbstractSlide) {
             return;
         }
         // Core
@@ -1377,12 +1377,12 @@ class PowerPoint2007 implements ReaderInterface
                 continue;
             }
             switch ($oNode->tagName) {
-                case 'p:graphicFrame':
-                    $this->loadShapeTable($xmlReader, $oNode, $oSlide);
-                    break;
-                case 'p:pic':
-                    $this->loadShapeDrawing($xmlReader, $oNode, $oSlide);
-                    break;
+                // case 'p:graphicFrame':
+                //     $this->loadShapeTable($xmlReader, $oNode, $oSlide);
+                //     break;
+                // case 'p:pic':
+                //     $this->loadShapeDrawing($xmlReader, $oNode, $oSlide);
+                //     break;
                 case 'p:sp':
                     $this->loadShapeRichText($xmlReader, $oNode, $oSlide);
                     break;

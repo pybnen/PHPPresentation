@@ -364,9 +364,9 @@ class Paragraph implements ComparableInterface
      *
      * @return self
      */
-    public function setSpacingBefore(int $spacingBefore): self
+    public function setSpacingBefore($spacingBefore): self
     {
-        $this->spacingBefore = $spacingBefore;
+        $this->spacingBefore = (int)$spacingBefore;
 
         return $this;
     }
@@ -388,9 +388,9 @@ class Paragraph implements ComparableInterface
      *
      * @return self
      */
-    public function setSpacingAfter(int $spacingAfter): self
+    public function setSpacingAfter($spacingAfter): self
     {
-        $this->spacingAfter = $spacingAfter;
+        $this->spacingAfter = (int)$spacingAfter;
 
         return $this;
     }
